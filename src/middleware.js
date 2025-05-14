@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
-
+const user = true;
 export const middleware = (request) => {
-  return NextResponse.redirect(new URL("/about", request.url));
+  if (!user) {
+    return NextResponse.redirect(new URL("/login", request.url));
+  }
 };
 export const config = {
-  matcher: "/user-profile",
+  matcher: "/dashboard",
 };
